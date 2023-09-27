@@ -1,0 +1,15 @@
+.grid-container {
+    width: 550px;
+    display: flex;
+    flex-wrap: wrap;
+    grid-template-columns: auto auto auto;
+}
+
+.grid-item {
+    border: 1px solid black;
+    flex: 1 1 0;
+}
+
+.grid-item:hover {
+    background-color: black;
+}
