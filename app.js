@@ -1,30 +1,26 @@
-const container = document.querySelector('.container');
+let mainContainer = document.querySelector(".container");
 
-// create new div for grid container
-const gridContainer = document.createElement('div');
-gridContainer.classList.add("grid-container");
+// create singleDiv as a box
+function createDiv(size) {
+    let newDiv = document.createElement("div");
 
-let gridSize = 16;
+    newDiv.style.width = `${size}px`;
+    newDiv.style.height = `${size}px`;
+    newDiv.style.boxSizing = `border-box`;
 
-for (let i = 1; i <= 4; i++) {
-    for (let j = 1; j < 4; j++) {
-        const gridItem = document.createElement('div');
-        gridItem.textContent = ` `
-        gridItem.classList.add("grid-item");
+    newDiv.classList.add('box');
 
-        gridItem.style.padding = `${500 / 32}px`
-
-        gridContainer.appendChild(gridItem);
-
-    }
-    const gridItem = document.createElement('div');
-    gridItem.textContent = ` `
-    gridItem.classList.add("grid-item");
-
-    gridItem.style.padding = `${500 / 32}px`
-
-    gridContainer.appendChild(gridItem);
+    return newDiv
 }
 
-container.appendChild(gridContainer);
+// create multiple box for 16x16
 
+function createMultipleDiv() {
+    for (let i = 0; i < 16; i++) {
+        for (let j = 0; j < 16; j++) {
+            mainContainer.appendChild(createDiv(30));
+        }
+    }
+}
+
+createMultipleDiv()
