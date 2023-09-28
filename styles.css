@@ -1,9 +1,30 @@
 .container {
     display: flex;
-    width: 500px;
-    flex-wrap: wrap;
 }
 
 .box {
     border: 1px solid black;
+}
+
+.box-group {
+    display: flex;
+    width: 500px;
+    flex-wrap: wrap;
+}
+
+.button-group {
+    margin-top: 20px;
+}
+
+#clearButton {
+    background-color: aliceblue;
+    border: 1px solid black;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+#clearButton:hover {
+    background-color: white;
+    cursor: pointer;
+    
 }
