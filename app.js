@@ -33,14 +33,27 @@ function createMultipleDiv(size) {
 }
 
 // add background color when hovering the box
-function addBackgroundWhenHover() {
+function addBackgroundWhenHover(color = null) {
     let boxes = document.querySelectorAll('.box');
 
     boxes.forEach(element => {
         element.addEventListener('mouseover', () => {
-            element.style.backgroundColor = "black";
+            if (color == null) {
+                const randomColor = getRandomColor();
+                element.style.backgroundColor = randomColor;
+            } else {
+                element.style.backgroundColor = "black"
+            }
         })
     });
+}
+
+// get random color
+function getRandomColor() {
+    const colors = ['#fd8800', '#fd008f', '#9700fd', '#003dfd', '#05c7e6', '#4bd58d'];
+    const randomIndex = Math.floor(Math.random() * colors.length);
+
+    return colors[randomIndex];
 }
 
 // clear canvas
@@ -56,7 +69,33 @@ function clearcanvas() {
     })
 }
 
+// choose button color
+function chooseColor() {
+    let blackButton = document.querySelector("#blackButton");
+    let colorfulButton = document.querySelector("#colorfulButton");
+
+    blackButton.addEventListener('click', () => {
+        blackButton.classList.add("button-active");
+        colorfulButton.classList.remove("colorful-button-active");
+
+        return addBackgroundWhenHover("black");
+    })
+
+    colorfulButton.addEventListener('click', () => {
+        blackButton.classList.remove("button-active");
+        colorfulButton.classList.add("colorful-button-active")
+
+        const randomengdomColor = getRandomColor();
+        // element.style.backgroundColor = randomColor;
+
+        return addBackgroundWhenHover();
+    })
+
+    blackButton.classList.add("button-active");
+    return addBackgroundWhenHover("black");
+}
+
 // call all function needed
 createMultipleDiv(32);
-addBackgroundWhenHover();
+chooseColor();
 clearcanvas();

@@ -1,5 +1,11 @@
+body {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 .container {
     display: flex;
+    justify-content: center;
 }
 
 .box {
@@ -17,14 +23,51 @@
     margin-top: 20px;
 }
 
-#clearButton {
+button {
     border: 1px solid black;
     padding: 10px 20px;
     border-radius: 5px;
 }
 
-#clearButton:hover {
+button:hover, .button-active {
     background-color: black;
     color: white;
     cursor: pointer;
+}
+
+/* colorful background-color */
+#colorfulButton:hover, .colorful-button-active {
+    background-color: blueviolet;
+    background: linear-gradient(238deg, #fd8800, #fd008f, #9700fd, #003dfd, #05c7e6, #4bd58d);
+    -webkit-animation: rainbow 5s ease infinite;
+    background-size: 1200% 1200%;
+    animation: rainbow 5s ease infinite;
+}
+
+@-webkit-keyframes rainbow {
+    0% {
+        background-position: 0% 50%
+    }
+
+    50% {
+        background-position: 100% 50%
+    }
+
+    100% {
+        background-position: 0% 50%
+    }
+}
+
+@keyframes rainbow {
+    0% {
+        background-position: 0% 50%
+    }
+
+    50% {
+        background-position: 100% 50%
+    }
+
+    100% {
+        background-position: 0% 50%
+    }
 }
