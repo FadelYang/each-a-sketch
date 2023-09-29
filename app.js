@@ -17,14 +17,19 @@ function createDiv(size) {
     return newDiv
 }
 
-// create multiple box for 16x16
-function createMultipleDiv() {
-    for (let i = 0; i < 16; i++) {
-        for (let j = 0; j < 16; j++) {
-            boxGroup.appendChild(createDiv(30));
+// create multiple box for nxn
+// if n = 2, the div will divide total width by 4
+// if n = 3, the div will divide total width by 9 and so on
+function createMultipleDiv(size) {
+    let boxContainerSize = 400;
+    let boxSize = boxContainerSize / (size);
+
+    for (let i = 0; i < size; i++) {
+        for (let j = 0; j < size; j++) {
+            boxGroup.appendChild(createDiv(boxSize));
+            mainContainer.appendChild(boxGroup);
         }
     }
-    mainContainer.appendChild(boxGroup);
 }
 
 // add background color when hovering the box
@@ -52,6 +57,6 @@ function clearcanvas() {
 }
 
 // call all function needed
-createMultipleDiv();
+createMultipleDiv(32);
 addBackgroundWhenHover();
 clearcanvas();
