@@ -1,4 +1,6 @@
 let mainContainer = document.querySelector(".container");
+let blackButton = document.querySelector("#blackButton");
+let colorfulButton = document.querySelector("#colorfulButton");
 
 // create div for box
 let boxGroup = document.createElement("div");
@@ -30,6 +32,32 @@ function createMultipleDiv(size) {
             mainContainer.appendChild(boxGroup);
         }
     }
+}
+
+
+function setContainerSize() {
+    let slider = document.querySelector("#rangeSlider");
+    let sliderValue = 32;
+    createMultipleDiv(sliderValue);
+    
+    slider.addEventListener('change', () => {
+        // reset before create new one
+        
+        while (boxGroup.firstChild) {
+            boxGroup.removeChild(boxGroup.firstChild);
+        }
+
+        while (mainContainer.firstChild) {
+            mainContainer.removeChild(mainContainer.firstChild);
+        }
+
+        // reset button active
+        blackButton.classList.remove("button-active");
+        colorfulButton.classList.remove("colorful-button-active");
+
+        // create new one
+        createMultipleDiv(slider.value);
+    });
 }
 
 // add background color when hovering the box
@@ -71,9 +99,6 @@ function clearcanvas() {
 
 // choose button color
 function chooseColor() {
-    let blackButton = document.querySelector("#blackButton");
-    let colorfulButton = document.querySelector("#colorfulButton");
-
     blackButton.addEventListener('click', () => {
         blackButton.classList.add("button-active");
         colorfulButton.classList.remove("colorful-button-active");
@@ -96,6 +121,6 @@ function chooseColor() {
 }
 
 // call all function needed
-createMultipleDiv(32);
+setContainerSize();
 chooseColor();
 clearcanvas();
